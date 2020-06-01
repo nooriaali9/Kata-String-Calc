@@ -18,7 +18,7 @@ public class StringCal
 
         if(numbers.length()> 1)
         {
-            findNegative(numbers);
+        findNegative(numbers);
         String al = numbers.replaceAll("[^a-zA-Z0-9]+","");
         String[] a= al.split("");
         int[] b=new int[a.length];
@@ -39,13 +39,19 @@ public class StringCal
     
     private void findNegative(String numbers) throws Exception
         {
-        String al = numbers.replaceAll("[^a-zA-Z0-9]+","");
-        String[] a= al.split("");
-        for(String curr:a)
+        String al = numbers.replaceAll("[&,:;=\\\\?@#|/'<>.^*()%!]*","");        
+        String[] b= al.split("");
+        try{
+        for(String curr:b)
         {
-            if(Integer.parseInt(curr)<0)
+            if(Float.parseFloat(curr)<0)
             throw new Exception("Negative Input!");
         }
+    }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }
     }
     
     public static void main(String[] args)
