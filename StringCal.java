@@ -1,6 +1,13 @@
+public class MyException extends Exception
+{
+ public MyException(String str)
+ {
+  System.out.println(str);
+ }
+}
 public class StringCal 
 {
-    public int Add(String numbers) throws Exception
+    public int Add(String numbers) throws IOException
     {
        int x=0;
        if(numbers== null)
@@ -29,7 +36,7 @@ public class StringCal
         
             if(b[k]<0)
             {
-                throw new Exception("Negatives Not allowed!");
+                  throw new MyException("Number is negative");
             }
             for(int i=0;i<b.length;i++)
         {
@@ -38,9 +45,8 @@ public class StringCal
         }
         return x;
     }
-    catch(Exception e)
-     {
-         e.printStackTrace();
+    catch (MyException m) {
+   System.out.println(m);
     }
     }
     
