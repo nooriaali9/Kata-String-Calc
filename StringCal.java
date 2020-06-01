@@ -32,7 +32,7 @@ public class StringCal
        
         try{
         for(int k=0;k<a.length;k++){
-         if(a[k].equals('-'))
+         if(a[k].equals("-"))
             {
                  throw new MyException("Negatives Not allowed!");
                 }
