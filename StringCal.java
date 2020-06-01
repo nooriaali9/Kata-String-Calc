@@ -23,43 +23,39 @@ public class StringCal
         String[] a= al.split("");
         int[] b=new int[a.length];
        
-        for(int k=0;k<a.length;k++)
+        try{
+        for(int k=0;k<a.length;k++){
         b[k]=Integer.parseInt(a[k]);
-          
-        for(int i=0;i<b.length;i++)
+        
+            if(b[k]<0)
+            {
+                throw new Exception("Negatives Not allowed!");
+            }
+            for(int i=0;i<b.length;i++)
         {
             x=x+b[i];
         }
-    
-    }
-
-          
-       return x;
-    }
-    
-    private void findNegative(String numbers) throws Exception
-        {
-        String al = numbers.replaceAll("[&,:;=\\\\?@#|/'<>.^*()%!]*","");        
-        String[] b= al.split("");
-        for(String curr:b)
-        {
-            if(Float.parseFloat(curr)<0)
-            throw new Exception("Negative Input!");
         }
+        return x;
     }
+    catch(Exception e)
+     {
+         e.printStackTrace();
+    }
+    }
+    
+        return x;
+    }
+    
     
     public static void main(String[] args) throws Exception
     {
      StringCal m = new StringCal();
      String a="//;\n2,5,6;2"; 
-     try{
+     
      int x=m.Add(a); 
      System.out.println("ss=" +x);
-    }
-     catch(Exception e)
-     {
-         e.printStackTrace();
-    }
+  
 }
 
 }
