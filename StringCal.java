@@ -32,12 +32,14 @@ public class StringCal
        
         try{
         for(int k=0;k<a.length;k++){
+         if(a[k].equals('-'))
+            {
+                 throw new MyException("Negatives Not allowed!");
+                }
+            
         b[k]=Integer.parseInt(a[k]);
         
-            if(b[k]<0)
-            {
-                  throw new MyException("Number is negative");
-            }
+        
             for(int i=0;i<b.length;i++)
         {
             x=x+b[i];
