@@ -18,7 +18,7 @@ public class StringCal
 
         if(numbers.length()> 1)
         {
-        findNegative(numbers);
+        //findNegative(numbers);
         String al = numbers.replaceAll("[^a-zA-Z0-9]+","");
         String[] a= al.split("");
         int[] b=new int[a.length];
@@ -41,25 +41,25 @@ public class StringCal
         {
         String al = numbers.replaceAll("[&,:;=\\\\?@#|/'<>.^*()%!]*","");        
         String[] b= al.split("");
-        try{
         for(String curr:b)
         {
             if(Float.parseFloat(curr)<0)
             throw new Exception("Negative Input!");
         }
     }
-    catch(Exception e)
-    {
-        System.out.println(e);
-    }
-    }
     
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
      StringCal m = new StringCal();
-     String a="//;\n -2,5,6;2"; 
+     String a="//;\n2,5,6;2"; 
+     try{
      int x=m.Add(a); 
      System.out.println("ss=" +x);
     }
+     catch(Exception e)
+     {
+         e.printStackTrace();
+    }
+}
 
 }
