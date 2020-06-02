@@ -7,8 +7,10 @@ public class MyException extends Exception
 }
 public class StringCal 
 {
+    public static int count=0; 
     public int Add(String numbers) throws IOException
     {
+       count++;
        int x=0;
        if(numbers== null)
        {
@@ -26,18 +28,32 @@ public class StringCal
         if(numbers.length()> 1)
         {
         //findNegative(numbers);
-        String al = numbers.replaceAll("[^a-zA-Z0-9]+","");
-        String[] a= al.split("");
+        String al = numbers.replaceAll("[&,:;=\\\\?@#|/'<>.^*()%!]+"," ");
+        al=al.trim();
+        String[] a= al.split("\\s+");
         int[] b=new int[a.length];
        
         try{
+         for(int k=0;k<a.length;k++){
+            if(a[k].equals("-"))
+            {
+                System.out.print(" "+ a[k]+" "+a[k+1]);
+                 //throw new MyException("Negatives Not allowed!");
+                 
+                }
+            }
+            System.out.print("\n");
+       
         for(int k=0;k<a.length;k++){
          if(a[k].equals("-"))
             {
                  throw new MyException("Negatives Not allowed!");
                 }
             
-        b[k]=Integer.parseInt(a[k]);
+        if(Integer.parseInt(a[k],10)>1000)
+            continue;
+        else
+            b[k]=Integer.parseInt(a[k],10);
         
         
             for(int i=0;i<b.length;i++)
@@ -59,10 +75,11 @@ public class StringCal
     public static void main(String[] args) throws Exception
     {
      StringCal m = new StringCal();
-     String a="//;\n2,5,6;2"; 
+     String a="***85***6***2"; 
      
      int x=m.Add(a); 
-     System.out.println("ss=" +x);
+     System.out.println("sum of integers in the string=" +x);
+     System.out.println("add has been called " +count+ " number of times");
   
 }
 
