@@ -28,8 +28,7 @@ public class StringCal
         if(numbers.length()> 1)
         {
         //findNegative(numbers);
-        String al = numbers.replaceAll("[&,:;=\\\\?@#|/'<>.^*()%!]+"," ");
-        al = numbers.replaceAll(System.lineSeparator()," ");
+        String al = numbers.replaceAll("[&,:;=\\\\?@#|\\Q[]\\E/'<>.^*()%!\n]+"," ");
         al=al.trim();
         String[] a= al.split("\\s+");
         int[] b=new int[a.length];
@@ -76,7 +75,7 @@ public class StringCal
     public static void main(String[] args) throws Exception
     {
      StringCal m = new StringCal();
-     String a="***85***6***2"; 
+     String a="***1001\n**[*6\n***2"; 
      
      int x=m.Add(a); 
      System.out.println("sum of integers in the string=" +x);
